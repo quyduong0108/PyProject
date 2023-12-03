@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đăng nhập tài khoản</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .inner {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container i {
+            font-size: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-input {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-input label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-input input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        span a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="inner">
+            <section class="container box">
+                <div class="row"><a href="/"><i class="fas fa-home"></i></a></div>
+                <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
+                <form action="/login/" method="POST" class="box">
+                    {% csrf_token %}
+                    {% for key, value in form.errors.items %}
+                        {{ value }}
+                    {% endfor %}
+                    <div class="form-input">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="form-control">
+                    </div>
+                    <div class="form-input">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control">
+                    </div>
+                    <input type="hidden" name="next" value="/" />
+                    <input type="submit" value="ĐĂNG NHẬP" />
+                    <span>Or <a href="/register">Đăng Ký</a></span>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
